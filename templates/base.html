@@ -12,16 +12,78 @@
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">      
 
-
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 
+
 <table class="centered thick-border">
-	<h4 class="panel panel-blue text-center" >CommonLinks</h4>
+	<h4 class="panel panel-blue text-center">Google</h4>
 
-	{% for k, v in commonLinks.items() %}
-
-	<p><a href= "{{ v }}" >{{ v }}</a><br></p>
-	{% endfor %}
-
+		{% for key, value in googoleLinks.items() %}
+		<a href="{{ value }}" >{{ value }}</a><br>
+		{% endfor %}
 </table>
+
+<table>
+	<p><p><br></p></p>
+</table>
+
+<table class="centered thick-border">
+	<h4 class="panel panel-blue text-center">DuckduckGo</h4>
+
+		{% for key, value in duckduckgoLinks.items() %}
+		<a href="{{ value }}" >{{ value }}</a><br>
+		{% endfor %}
+</table>
+
+<table>
+	<p><p><br></p></p>
+</table>
+
+<table class="centered thick-border">
+	<h4 class="panel panel-blue text-center">Givewater</h4>
+
+		{% for key, value in givewaterLinks.items() %}
+		<a href="{{ value }}" >{{ value }}</a><br>
+		{% endfor %}
+</table>
+
+<table>
+	<p><p><br></p></p>
+</table>
+
+
+<table class="centered thick-border">
+	<h4 class="panel panel-blue text-center">Ecosia</h4>
+
+		{% for key, value in ecosiaLinks.items() %}
+		<a href="{{ value }}" >{{ value }}</a><br>
+		{% endfor %}
+</table>
+
+<table>
+	<p><p><br></p></p>
+</table>
+
+<table class="centered thick-border">
+	<h4 class="panel panel-blue text-center">Bing</h4>
+
+		{% for key, value in bingLinks.items() %}
+		<a href="{{ value }}" >{{ value }}</a><br>
+		{% endfor %}
+</table>
+
+<table>
+	<p><p><br></p></p>
+</table>
+
+
+<table class="centered thick-border">
+	<h4 class="panel panel-blue text-center">CommonLinks</h4>
+
+		{% for key, value in commonLinks.items() %}
+		<a href="{{ value }}" >{{ value }}</a><br>
+		{% endfor %}
+</table>
+
+</head>
 </html>

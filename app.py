@@ -9,10 +9,8 @@ from flask import Flask, render_template
 #This programe is create by Sujit Mandal
 """
 Github: https://github.com/sujitmandal
-This programe is create by Sujit Mandal
+Pypi : https://pypi.org/user/sujitmandal/
 LinkedIn : https://www.linkedin.com/in/sujit-mandal-91215013a/
-Facebook : https://www.facebook.com/sujit.mandal.33671748
-Twitter : https://twitter.com/mandalsujit37
 """
 
 userAgent = ('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36') #my user agent
@@ -24,6 +22,22 @@ app = Flask(__name__)
 @app.route('/')
 def home():
 	return(render_template('home.html'))'''
+
+def dictionary(lists):
+	finalList = []
+
+	for i in lists:
+		finalList.append(i)
+
+	keys = []
+	for j in range(len(finalList)):
+		key = j + 1
+		keys.append(key)
+
+	commonLinks = {}
+	commonLinks = dict(zip(keys, finalList))
+	return(commonLinks)
+
 
 @app.route('/')
 def Links():
@@ -45,20 +59,16 @@ def Links():
 	intersection4 = intersection3.intersection(bingSet)
 
 	intersectionList = list(intersection4)
-	finalList = []
 
-	for i in intersectionList:
-		finalList.append(i)
+	googoleLinks = dictionary(googleSearch)
+	duckduckgoLinks = dictionary(duckduckgoSearch)
+	givewaterLinks = dictionary(givewaterSearch)
+	ecosiaLinks = dictionary(ecosiaSearch)
+	bingLinks = dictionary(bingSearch)
 
-	keys = []
-	for j in range(len(finalList)):
-		key = j + 1
-		keys.append(key)
+	commonLinks = dictionary(intersectionList)
 
-	commonLinks = {}
-	commonLinks = dict(zip(keys, finalList))
-
-	return(render_template('base.html', commonLinks=commonLinks))
+	return(render_template('base.html', googoleLinks=googoleLinks, duckduckgoLinks=duckduckgoLinks, givewaterLinks=givewaterLinks, ecosiaLinks=ecosiaLinks,bingLinks=bingLinks, commonLinks=commonLinks))
 
 
 if __name__ == "__main__":
