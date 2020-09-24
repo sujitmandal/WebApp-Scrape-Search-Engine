@@ -6,9 +6,6 @@ pip install scrape-search-engine
 ```
 [Package Link](https://pypi.org/project/scrape-search-engine/)
 
-## Scrape Search Engine :
-search Anything on Search Engine it will collect the all the links ans save it into JSON file format.
-
 ## How to import the module:
 ```
 userAgent = ('') #search on google "my user agent"
