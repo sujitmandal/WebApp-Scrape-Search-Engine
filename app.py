@@ -14,7 +14,6 @@ LinkedIn : https://www.linkedin.com/in/sujit-mandal-91215013a/
 """
 
 userAgent = ('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36') #my user agent
-#search = ('pyhon') #Enter Anything for Search
 
 app = Flask(__name__)
 
