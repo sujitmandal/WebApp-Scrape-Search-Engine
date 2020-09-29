@@ -99,7 +99,7 @@ MIT Licensed
 ## Author:
 Sujit Mandal
 
-Tejeshwar Pradhan [Front End Team]
+Tejeshwar Pradhan [ Front End Team ]
 
 [GitHub](https://github.com/sujitmandal)
 
