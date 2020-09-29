@@ -99,6 +99,8 @@ MIT Licensed
 ## Author:
 Sujit Mandal
 
+Tejeshwar Pradhan
+
 [GitHub](https://github.com/sujitmandal)
 
 [PyPi](https://pypi.org/user/sujitmandal/)
