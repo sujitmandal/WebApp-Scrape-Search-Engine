@@ -8,7 +8,7 @@ Step 2: cd WebApp-Scrape-Search-Engine
 
 Step 3: pip install -r requirements.txt or pip3 install -r requirements.txt
 
-Step 4:  python app.py 
+Step 4: python app.py 
 
 Step 5: Open browser and type http://127.0.0.1:8000/
 ```
