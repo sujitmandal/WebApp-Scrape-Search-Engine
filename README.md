@@ -91,7 +91,11 @@ How to install | Python | | Anaconda | | Opencv library |
 ```
 • pip install scrape-search-engine
 
+• pip install requests
+
 • pip install flask
+
+• pip install bs4
 ```
 ## License:
 MIT Licensed
