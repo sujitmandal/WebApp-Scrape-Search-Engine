@@ -2,12 +2,14 @@ from flask import Flask
 from flask import url_for
 from flask import request
 from flask import redirect
+from collections import Counter
 from flask import render_template
 from ScrapeSearchEngine.ScrapeSearchEngine import Google
 from ScrapeSearchEngine.ScrapeSearchEngine import Duckduckgo
 from ScrapeSearchEngine.ScrapeSearchEngine import Ecosia
 from ScrapeSearchEngine.ScrapeSearchEngine import Givewater
 from ScrapeSearchEngine.ScrapeSearchEngine import Bing
+from ScrapeSearchEngine.ScrapeSearchEngine import Yahoo
 
 #Github: https://github.com/sujitmandal
 #This programe is create by Sujit Mandal
@@ -40,7 +42,6 @@ def dictionary(lists):
 	commonLinks = dict(zip(keys, finalList))
 	return(commonLinks)
 
-
 @app.route('/result', methods=['POST', 'GET'])
 def result():
 	if request.method == 'POST':
@@ -51,29 +52,46 @@ def result():
 		givewaterSearch = Givewater(search, userAgent)
 		ecosiaSearch = Ecosia(search, userAgent)
 		bingSearch = Bing(search, userAgent)
-
-		googleSet = set(googleSearch)
-		duckduckgoSet = set(duckduckgoSearch)
-		givewaterSet = set(givewaterSearch)
-		ecosiaSet = set(ecosiaSearch)
-		bingSet = set(bingSearch)
-
-		intersection1 = googleSet.intersection(givewaterSet)
-		intersection2 = intersection1.intersection(duckduckgoSet)
-		intersection3 = intersection2.intersection(ecosiaSet)
-		intersection4 = intersection3.intersection(bingSet)
-
-		intersectionList = list(intersection4)
+		yahooSearch = Yahoo(search, userAgent)
 
 		googoleLinks = dictionary(googleSearch)
 		duckduckgoLinks = dictionary(duckduckgoSearch)
 		givewaterLinks = dictionary(givewaterSearch)
 		ecosiaLinks = dictionary(ecosiaSearch)
 		bingLinks = dictionary(bingSearch)
+		yahooLinks = dictionary(yahooSearch)
 
-		commonLinks = dictionary(intersectionList)
+		link = []
+		for i in googleSearch:
+			link.append(i)
+		for j in duckduckgoSearch:
+			link.append(j)
+		for k in givewaterSearch:
+			link.append(k)
+		for l in ecosiaSearch:
+			link.append(l)
+		for m in bingSearch:
+			link.append(m)
+		for n in yahooSearch:
+			link.append(n)
+	
+		commonLink = Counter(link)
+	
+		commonLinks = sorted(commonLink.items(), key=lambda value: value[1], reverse=True)
+		commonLinks = dict(commonLinks)
 
-		return(render_template('result.html', googoleLinks=googoleLinks, duckduckgoLinks=duckduckgoLinks, givewaterLinks=givewaterLinks, ecosiaLinks=ecosiaLinks,bingLinks=bingLinks, commonLinks=commonLinks))
+		finalText = []
+		finalLink = []
+
+		for text in commonLinks.items():
+			finalText.append(text)
+
+		for link in commonLinks.keys():
+			finalLink.append(link)
+
+		finalResults = zip(finalLink, finalText)
+
+		return(render_template('result.html', googoleLinks=googoleLinks, duckduckgoLinks=duckduckgoLinks, givewaterLinks=givewaterLinks, ecosiaLinks=ecosiaLinks,bingLinks=bingLinks, yahooLinks=yahooLinks, finalResults=finalResults))
 	return(None)
 
 if __name__ == "__main__":

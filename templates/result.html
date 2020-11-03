@@ -75,12 +75,24 @@
 	<p><p><br></p></p>
 </table>
 
+<table class="centered thick-border">
+	<h4 class="panel panel-blue text-center">Yahoo</h4>
+
+		{% for key, value in yahooLinks.items() %}
+		<a href="{{ value }}" >{{ value }}</a><br>
+		{% endfor %}
+</table>
+
+<table>
+	<p><p><br></p></p>
+</table>
+
 
 <table class="centered thick-border">
-	<h4 class="panel panel-blue text-center">CommonLinks</h4>
+	<h4 class="panel panel-blue text-center">Final Links</h4>
 
-		{% for key, value in commonLinks.items() %}
-		<a href="{{ value }}" >{{ value }}</a><br>
+		{% for key, value in finalResults %}
+		<a href="{{ key }}" >{{ value }}</a><br>
 		{% endfor %}
 </table>
 
