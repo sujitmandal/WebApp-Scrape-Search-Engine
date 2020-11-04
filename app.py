@@ -49,6 +49,7 @@ def result():
 
 		googleSearch = Google(search, userAgent)
 		duckduckgoSearch = Duckduckgo(search, userAgent)
+		duckduckgoSearch = duckduckgoSearch[:10]
 		givewaterSearch = Givewater(search, userAgent)
 		ecosiaSearch = Ecosia(search, userAgent)
 		bingSearch = Bing(search, userAgent)
@@ -83,15 +84,29 @@ def result():
 		finalText = []
 		finalLink = []
 
-		for text in commonLinks.items():
-			finalText.append(text)
+		text = []
+		value = []
+
+		for keys, values in commonLinks.items():
+			text.append(keys)
+			value.append(values)
+
+		for s in range(len(text)):
+			texts = text[s] + ' ' + str(value[s])
+			finalText.append(texts)
 
 		for link in commonLinks.keys():
 			finalLink.append(link)
 
 		finalResults = zip(finalLink, finalText)
 
-		return(render_template('result.html', googoleLinks=googoleLinks, duckduckgoLinks=duckduckgoLinks, givewaterLinks=givewaterLinks, ecosiaLinks=ecosiaLinks,bingLinks=bingLinks, yahooLinks=yahooLinks, finalResults=finalResults))
+		return(render_template('result.html', 	googoleLinks=googoleLinks, 
+												duckduckgoLinks=duckduckgoLinks, 
+												givewaterLinks=givewaterLinks, 
+												ecosiaLinks=ecosiaLinks,
+												bingLinks=bingLinks, 
+												yahooLinks=yahooLinks, 
+												finalResults=finalResults))
 	return(None)
 
 if __name__ == "__main__":
